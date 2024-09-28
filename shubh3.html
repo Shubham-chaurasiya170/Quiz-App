@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>QUIZ - APP</title>
+   <!-- <link rel="stylesheet" href="shubh3.css"> -->
+   <style>
+      * {
+         margin: 16px;
+         padding: 2px;
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         box-sizing: border-box;
+      }
+
+      body {
+         background-color: rgb(121, 9, 70);
+         background: radial-gradient(circle, rgba(121, 9, 70, 1) 35%, rgba(255, 0, 78, 1) 100%);
+         ;
+         width: 100%;
+         height: 100%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .card {
+         width: 60%;
+         /* height: 70%; */
+         /* max-height: 95%; */
+         background-color: white;
+         border-radius: .5rem;
+         border: none;
+
+      }
+
+      .card h1 {
+         border-bottom: solid black;
+         padding-top: 10px;
+         padding-bottom: 15px;
+         padding-left: 4px;
+
+      }
+
+      .question {
+
+         padding-left: 4px;
+         padding-right: 4px;
+
+      }
+
+      .question h2 {
+         padding-top: 10px;
+         padding-bottom: 25px;
+         font-size: 28px;
+      }
+
+      #options {
+
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+
+      }
+
+      .btn-option {
+         height: 38px;
+         font-size: larger;
+         font-weight: 500;
+         border-style: none;
+         /* background-color: rgb(218, 214, 214); */
+         /* padding-bottom: 5px; */
+         margin-bottom: 10px;
+         background-color: rgb(189, 186, 186);
+         border-radius: 0.5rem;
+         cursor: pointer;
+
+
+      }
+
+      /* .btn-option:not(disabled){
+   height: 38px;
+   font-size: larger;
+   font-weight: 500;
+   border-style: none;
+   /* background-color: rgb(218, 214, 214); */
+      /* padding-bottom: 5px;
+   margin-bottom: 10px;
+   background-color: rgb(189, 186, 186);
+   border-radius: 0.5rem;
+   cursor: pointer;
+} */
+
+      .btn-option:disabled {
+         cursor: no-drop;
+      }
+
+      /* .options #btn-option:hover {
+   background-color: rgb(58, 207, 226);
+} */
+      .btn-option:active {
+         background-color: #00ffc0;
+      }
+
+      .next {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         margin-bottom: 20px;
+
+
+
+      }
+
+      /* .btn{
+   height: 55px;
+   width: 125px;
+   font-size: 25px;
+   font-weight: 600; 
+   border: none;
+   background-color: rgb(189, 186, 186);
+   border-radius: 0.5rem;
+   cursor: pointer;
+  
+}  */
+      #btn {
+         height: 55px;
+         width: 125px;
+         font-size: 25px;
+         font-weight: 600;
+         border: none;
+         background-color: rgb(10, 10, 10);
+         border-radius: 0.5rem;
+         cursor: pointer;
+         color: white;
+
+      }
+
+      /* .next button:hover {
+   background-color: rgb(194, 34, 34);
+} */
+
+      #btn:active {
+         background-color: rgba(255, 0, 78, 1);
+      }
+
+      #btn {
+         display: none;
+      }
+
+      .correct {
+         background-color: #45ff00;
+      }
+
+      .incorrect {
+         background-color: #ff0012;
+      }
+   </style>
+
+</head>
+
+<body>
+
+   <div class="card">
+      <h1>Sample Quiz!!</h1>
+      <div class="question">
+         <h2 id="quiz-question">quiz- questions......</h2>
+         <div id="options">
+            <!-- <button class="btn-option">option1</button>
+         <button class="btn-option">option2</button>
+         <button class="btn-option">option3</button>
+         <button class="btn-option">option4</button>   -->
+         </div>
+      </div>
+      <div class="next">
+         <button id="btn">Next</button>
+      </div>
+      <!-- <button id="btn">Next</button> -->
+
+   </div>
+
+   <script src="shubh3.js">
+      const questions = [
+   {
+      question: " Who is the leading wicket taker in T20I CWC 2024?",
+      answers: [
+         { text: " A)   Risshad Hussain", correct: false },
+         { text: " B)  Fazalhaq Farooqi", correct: true },
+         { text: " C)  Arshdeep Singh", correct: false },
+         { text: "D)    Pat Cummins", correct: false }
+      ]
+   },
+   {
+      question: " Who is the leading run - scorer in T20I CWC 2024 ?",
+      answers: [
+         { text: " A)  R. Gurbaz", correct: true },
+         { text: " B)  Quinton De-Cock", correct: false },
+         { text: "  C)  Rohit Sharma", correct: false },
+         { text: "  D)  Travis Head", correct: false }
+      ]
+   },
+   {
+      question: " Which edition is  T20I CWC 2024?",
+      answers: [
+         { text: " A) 9th", correct: true },
+         { text: " B) 10th", correct: false },
+         { text: " C) 8th", correct: false },
+         { text: " D) 11th", correct: false }
+      ]
+   },
+   {
+      question: " Host countries of  T20I CWC 2024?",
+      answers: [
+         { text: " A)  West-Indies and USA", correct: true },
+         { text: "  B)  Sri-Lankan and Bangladesh", correct: false },
+         { text: " C) West-Indies and Sri-Lankan", correct: false },
+         { text: " D) Sri-Lankan and USA", correct: false }
+      ]
+   },
+   {
+      question: " Who is the current Coach of AFGHANISTAN CRICKET team?",
+      answers: [
+         { text: " A) Ajay jadeja", correct: false },
+         { text: " B) Gary Kirsten", correct: false },
+         { text: " C) Gonathan Trott", correct: true },
+         { text: " D) Dwayne Bravo", correct: false }
+      ]
+   }
+]
+
+const quizQuestion = document.getElementById("quiz-question");
+const buttonOption = document.getElementById("options");
+const nextButton = document.getElementById("btn");
+// const btnOption = document.getElementsByClassName("btn-option");
+let currentQtnindex = 0;
+let score = 0;
+function startQuiz() {
+   currentQtnindex = 0;
+   score = 0;
+   nextButton.innerHTML = "Next";
+   showQuestion();
+
+}
+ function resetState(){
+    nextButton.style.display = "none";
+    while(buttonOption.firstChild){
+      buttonOption.removeChild(buttonOption.firstChild);
+    }
+ }
+function showQuestion() {
+    resetState();
+   let currentQtn = questions[currentQtnindex];
+   let questionNo = currentQtnindex + 1;
+   quizQuestion.innerHTML = questionNo + ". " + currentQtn.question;
+
+   currentQtn.answers.forEach(answer => {
+      const btn = document.createElement("button");
+      btn.innerHTML = answer.text;
+      btn.classList.add("btn-option");
+      buttonOption.appendChild(btn);
+      if (answer.correct) {
+         btn.dataset.correct = answer.correct;
+      }
+      btn.addEventListener("click", selectAnswer);
+   });
+}
+function selectAnswer(e) {
+   const selectedBtn = e.target;
+   const isCorrect = selectedBtn.dataset.correct === "true";
+   if (isCorrect) {
+      selectedBtn.classList.add("correct");
+       score = score+2;
+   } else {
+      selectedBtn.classList.add("incorrect");
+   }
+   Array.from(buttonOption.children).forEach(button => {
+      if (button.dataset.correct === "true") {
+         button.classList.add("correct");
+      }
+      button.disabled = true;
+   
+   });
+   nextButton.style.display = "block";
+}
+function showScore(){
+   quizQuestion.innerHTML = `You scored  = ${score} / ${questions.length*2};`;
+   nextButton.innerHTML = "Play Again";
+   nextButton.style.display ="block";
+}
+function handleNextbtn(){
+   currentQtnindex++;
+   if(currentQtnindex<questions.length){
+      showQuestion();
+   }else{
+      showScore();
+   }
+}
+nextButton.addEventListener("click",()=>{
+if(currentQtnindex<questions.length){
+  handleNextbtn();
+}else{
+   startQuiz();
+}
+});
+
+
+startQuiz();
+
+
+   </script>
+</body>
+
+</html>
